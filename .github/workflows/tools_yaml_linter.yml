@@ -4,6 +4,9 @@ on:
   pull_request:
     branches: [ master ]
 
+permissions:
+  contents: read  
+
 jobs:
   validate-yaml:
     name: YAML Linter
@@ -13,5 +16,5 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
       
-      - name: Validate YAML file
+      - name: Validate YAML files
         run: yamllint .
