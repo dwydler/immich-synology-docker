@@ -1,0 +1,11 @@
+---
+extends: default
+
+ignore: |
+  .github/
+
+rules:
+  empty-lines:
+    level: warning
+  line-length:
+    max: 92
