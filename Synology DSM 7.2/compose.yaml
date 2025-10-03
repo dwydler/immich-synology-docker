@@ -12,7 +12,7 @@ services:
     cap_drop:
       # Prevent access to raw network traffic
       # https://immich.app/docs/FAQ/#how-can-i-run-immich-as-a-non-root-user
-      - NET_RAW      
+      - NET_RAW
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:2283/api/server/ping"]
       interval: 10s
@@ -48,7 +48,7 @@ services:
     cap_drop:
       # Prevent access to raw network traffic
       # https://immich.app/docs/FAQ/#how-can-i-run-immich-as-a-non-root-user
-      - NET_RAW    
+      - NET_RAW
     healthcheck:
       test: ["CMD-SHELL", "redis-cli ping || exit 1"]
     user: ${UID}:${GID}
@@ -73,7 +73,7 @@ services:
     cap_drop:
       # Prevent access to raw network traffic
       # https://immich.app/docs/FAQ/#how-can-i-run-immich-as-a-non-root-user
-      - NET_RAW      
+      - NET_RAW
     healthcheck:
       test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE_NAME}", "-U", "${DB_USERNAME}"]
       interval: 10s
@@ -123,7 +123,7 @@ services:
     depends_on:
       database:
         condition: service_started
-    
+
 
   immich-folder-album-creator:
     container_name: immich_folder_album_creator
