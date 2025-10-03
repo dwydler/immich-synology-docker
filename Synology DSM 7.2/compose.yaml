@@ -139,7 +139,7 @@ services:
     restart: unless-stopped
     environment:
       API_URL: http://${IMMICH_SERVER_HOSTNAME}:${IMMICH_SERVER_PORT}/api
-      API_KEY: "geheim"
+      API_KEY: ${IMMICH_API_KEY}
       ROOT_PATH: /volume3/photo
       ALBUM_LEVELS: "1,3"
       CRON_EXPRESSION: "*/5 * * * *"
