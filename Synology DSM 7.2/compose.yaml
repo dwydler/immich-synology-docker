@@ -20,12 +20,17 @@ services:
       retries: 5
     env_file:
       - .env
+    # https://github.com/immich-app/immich/discussions/18614
+    # environment:
+      # NODE_EXTRA_CA_CERTS: /certs/lab03-daniel.wydler-eu.pem
     ports:
       - ${IMMICH_SERVER_PORT}:2283
     volumes:
-      #- ${DSM_APP_SHARE}/photo:/usr/src/app/upload:rw
       - ${DSM_APP_SHARE}/photo:/data:rw
-      - /volume3/photo:/volume3/photo:ro
+      # - /volume1/photo:/volume1/photo:ro
+
+      # https://github.com/immich-app/immich/discussions/18614
+      # - /volume1/immich/certs/:/certs:roZ
 
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
@@ -125,29 +130,29 @@ services:
         condition: service_started
 
 
-  immich-folder-album-creator:
-    container_name: immich_folder_album_creator
-    image: salvoxia/immich-folder-album-creator:latest
-    security_opt:
+  # immich-folder-album-creator:
+    # container_name: immich_folder_album_creator
+    # image: salvoxia/immich-folder-album-creator:latest
+    # security_opt:
       # Prevent escalation of privileges after the container is started
       # https://immich.app/docs/FAQ/#how-can-i-run-immich-as-a-non-root-user
-      - no-new-privileges:true
-    cap_drop:
+      # - no-new-privileges:true
+    # cap_drop:
       # Prevent access to raw network traffic
       # https://immich.app/docs/FAQ/#how-can-i-run-immich-as-a-non-root-user
-      - NET_RAW
-    restart: unless-stopped
-    environment:
-      API_URL: http://${IMMICH_SERVER_HOSTNAME}:${IMMICH_SERVER_PORT}/api
-      API_KEY: ${IMMICH_API_KEY}
-      ROOT_PATH: /volume3/photo
-      ALBUM_LEVELS: "1,3"
-      CRON_EXPRESSION: "*/5 * * * *"
-      RUN_IMMEDIATELY: true
-      TZ: ${TZ}
-    depends_on:
-      immich-server:
-        condition: service_healthy
+      # - NET_RAW
+    # restart: unless-stopped
+    # environment:
+      # API_URL: http://${IMMICH_SERVER_HOSTNAME}:${IMMICH_SERVER_PORT}/api
+      # API_KEY: ${IMMICH_API_KEY}
+      # ROOT_PATH: /volume1/photo
+      # ALBUM_LEVELS: "1,3"
+      # CRON_EXPRESSION: "*/5 * * * *"
+      # RUN_IMMEDIATELY: true
+      # TZ: ${TZ}
+    # depends_on:
+      # immich-server:
+        # condition: service_healthy
 
 
 networks:
