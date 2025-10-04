@@ -20,11 +20,17 @@ services:
       retries: 5
     env_file:
       - .env
+    # https://github.com/immich-app/immich/discussions/18614
+    # environment:
+      # NODE_EXTRA_CA_CERTS: /certs/lab03-daniel.wydler-eu.pem  
     ports:
       - ${IMMICH_SERVER_PORT}:2283
     volumes:
       - ${DSM_APP_SHARE}/photo:/data:rw
       # - /volume1/photo:/volume1/photo:ro
+
+      # https://github.com/immich-app/immich/discussions/18614
+      # - /volume1/immich/certs/:/certs:roZ
 
       - /etc/localtime:/etc/localtime:ro
       - /var/run/docker.sock:/var/run/docker.sock:ro
