@@ -10,4 +10,4 @@ rules:
   empty-lines:
     level: warning
   line-length:
-    max: 117
+    max: 255
