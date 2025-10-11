@@ -8,7 +8,6 @@ on:
       - ".yamllint"
       - "**.yaml"
       - "**.yml"
-      - "**.yml.example"
       
 permissions:
   contents: read  
