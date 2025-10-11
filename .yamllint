@@ -1,8 +1,10 @@
 ---
 extends: default
 
-ignore: |
-  .github/
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+  - '.yamllint'
 
 rules:
   empty-lines:
